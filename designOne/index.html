@@ -9,12 +9,133 @@
 
 </head>
 <body>
-    <div class="h-screen w-full bg-black ">
+
+    <style>
+        .hide-scrollbar::-webkit-scrollbar{
+            display: none;
+        }
+        #slider{
+            animation :scroll 15s linear infinite
+        }
+        #slider:hover{
+            animation-play-state: paused;
+        }
+        #slider img{
+            filter: grayscale(50%);
+        }
+        #slider img:hover{
+            filter: grayscale(0%);
+            transform: translateY(-30px);
+            transition: 0.2s ease-out;
+        }
+
+        
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 8px;
+        }
+            
+        .div1 {
+            grid-column: span 2 / span 2;
+            grid-row: span 3 / span 3;
+        }
+
+        .div2 {
+            grid-column: span 2 / span 2;
+            grid-row: span 3 / span 3;
+            grid-column-start: 3;
+        }
+
+        .div3 {
+            grid-row: span 5 / span 5;
+            grid-column-start: 5;
+        }
+
+        .div4 {
+            grid-row: span 2 / span 2;
+            grid-row-start: 4;
+        }
+
+        .div5 {
+            grid-column: span 3 / span 3;
+            grid-row: span 2 / span 2;
+            grid-row-start: 4;
+        }
+        
+
+        .making-grid{
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+       .loader{
+        height: 4px;
+        border-radius: 10px;
+        background-color: black;
+        position: relative;
+        overflow: hidden;
+       }
+
+       .loader::after{
+        content: '';
+        position: absolute;
+        width: 10px;
+        border-radius: 10px;
+        height: 4px;
+        background-color: white;
+        animation: move 2s linear infinite;
+       }
+
+       ul li{
+        transition: 1s ease-in-out;
+       }
+
+       ul li:hover{
+            padding-left: 5px;
+        }
+
+        @keyframes move {
+            from{
+                left: -10px;
+            }
+            to{
+               left: 100%
+            }
+        }
+
+        @keyframes scroll {
+            0%{
+                transform: translateX(0%);
+            }
+            100%{
+                transform: translateX(calc(-60% * 4));
+            }
+        }
+    </style>
+    <!-- background -->
+     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-10"></div>
+     <!-- sidebar -->
+      <div id="sidebar" class=" fixed left-0 top-0  h-full w-3/5  md:w-1/2 bg-black shadow-lg  transform -translate-x-full transition-transform ease-in duration-300 z-20 flex justify-center">
+                <div class="flex flex-col w-3/4 h-3/4 mt-10 items-center">
+                    <img class="w-32 h-28 bg-contain" src="https://www.coreldraw.com/static/cdgs/landing_pages/seo/logo-design/08-symmetry.jpg" alt="">
+                    <ul class="flex flex-col items-center mt-10 flex-wrap  gap-10  text-xl ">
+                        <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Home</a></li>
+                        <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">About Us</a></li>
+                        <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Products</a></li>
+                        <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Contact Us</a></li>
+                    </ul> 
+                </div>
+        </div>
+
+
+    <div class="h-screen w-full bg-black">
         <!-- navbar -->
-         <div class="w-full h-20 md:24 bg-white flex  justify-between px-10  items-center">
+         <div id="navbar" class="w-full fixed h-20 md:h-24 bg-white flex transform translate-y-0  justify-between top-0 px-10 transition-all duration-300 ease-in z-10  items-center">
             <!-- logo -->
-             <div class=" h-full">
-                <img class="w-32 h-full bg-contain" src="https://www.coreldraw.com/static/cdgs/landing_pages/seo/logo-design/08-symmetry.jpg" alt="">
+             <div class=" h-full ">
+                <img class="w-32 h-full object-contain" src="https://www.coreldraw.com/static/cdgs/landing_pages/seo/logo-design/08-symmetry.jpg" alt="">
              </div>
              <!-- navs -->
               <ul class="md:flex justify-evenly flex-wrap hidden gap-10  text-xl ">
@@ -24,17 +145,81 @@
                     <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Contact Us</a></li>
               </ul>
               <!-- hamburger nav -->
-               <div id="btn" class="flex flex-col gap-1.5 md:hidden cursor-pointer mr-5">
+               <div id="btn" class="flex flex-col gap-1.5 md:hidden cursor-pointer mr-5 py-6">
                     <span class="w-8 h-0.5 bg-black"></span>
                     <span class="w-8 h-0.5 bg-black"></span>
                     <span class="w-8 h-0.5 bg-black"></span>
                </div>
+        </div>
+
+        <!-- content -->
+       <div class="pt-32 w-full h-full">
+            <!-- slider -->
+         <div  class="w-11/12 md:w-3/4 h-3/5 md:h-[60vh] flex  items-center justify-center overflow-hidden mx-auto overflow-x-auto scroll-smooth hide-scrollbar mt-10 md:mt-20">
+            <div id="slider" class="h-full  gap-4 px-4  flex cursor-pointer    ">
+                <img class="border-8 border-white rounded-3xl w-full md:w-3/5 aspect-video object-cover" src="https://images.pexels.com/photos/9992330/pexels-photo-9992330.jpeg" alt="">
+                <img class="border-8 border-white rounded-3xl w-full md:w-3/5  aspect-video object-cover" src="https://images.pexels.com/photos/8412407/pexels-photo-8412407.jpeg" alt="">
+                <img class="border-8 border-white rounded-3xl w-full md:w-3/5  aspect-video object-cover" src="https://images.pexels.com/photos/371160/pexels-photo-371160.jpeg" alt="">
+                <img class="border-8 border-white rounded-3xl w-full md:w-3/5  aspect-video object-cover" src="https://images.pexels.com/photos/7045589/pexels-photo-7045589.jpeg" alt="">
+                <img class="border-8 border-white rounded-3xl w-full md:w-3/5 aspect-video object-cover" src="https://images.pexels.com/photos/9992330/pexels-photo-9992330.jpeg" alt="">
+                <img class="border-8 border-white rounded-3xl w-full md:w-3/5 aspect-video object-cover" src="https://images.pexels.com/photos/8412407/pexels-photo-8412407.jpeg" alt="">
+                <img class="border-8 border-white rounded-3xl w-full md:w-3/5  aspect-video object-cover" src="https://images.pexels.com/photos/371160/pexels-photo-371160.jpeg" alt="">
+                <img class="border-8 border-white rounded-3xl w-full md:w-3/5  aspect-video object-cover" src="https://images.pexels.com/photos/7045589/pexels-photo-7045589.jpeg" alt="">
+               
             </div>
-            <!-- sidebar -->
-            <div id="sidebar" class=" fixed left-0 top-0  h-full w-3/5  md:w-1/2 bg-blue-200 shadow-lg  transform -translate-x-full transition-transform ease-in duration-300 z-20 "></div>
+         </div>
+       </div>
+       
     </div>
 
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-10"></div>
+    <div class="w-full h-screen bg-yellow-200 relative">
+        <div class="parent">
+            <div class="div1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, quae sapiente. Et, ducimus provident, dolorum nam exercitationem non deserunt iusto aspernatur molestiae est, doloribus nulla?</div>
+            <div class="div2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam aspernatur tenetur eligendi, delectus consequatur magni.</div>
+            <div class="div3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt aspernatur nam excepturi soluta maiores voluptatibus maxime consequatur sed? Maiores quaerat dignissimos architecto ea saepe ratione veniam sapiente accusamus vitae assumenda.</div>
+            <div class="div4">Lorem ipsum dolor sit amet consectetur adipisicing elit. A magnam eos itaque culpa officia sapiente.</div>
+            <div class="div5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, nisi exercitationem deserunt aliquid hic cupiditate optio quidem atque cum eius nulla ex provident eaque sapiente.</div>
+        </div>
+
+        <!-- footer -->
+         <div class="w-full h-[40vh]  absolute bottom-0 flex justify-evenly pt-20 pb-10 bg-blue-950">
+                <div class="w-60 text-white">
+                <h2>Harmonic</h2>
+                <span></span>
+                <p>Notre mission est d'apporter paix et sérénité dans votre vie quotidienne grâce à des solutions de bien-être innovantes</p>
+            </div>
+            <div class="text-white">
+                <h2>Navigation</h2>
+                <ul>
+                    <li>name1</li>
+                    <li>name2</li>
+                    <li>name3</li>
+                    <li>name4</li>
+                </ul>
+            </div>
+            <div class="text-white">
+                <h2>Support</h2>
+                <div class="loader"></div>
+                <ul>
+                    <li>name1</li>
+                    <li>name2</li>
+                    <li>name3</li>
+                    <li>name4</li>
+                </ul>
+            </div>
+            <div class="text-white">
+                <h2>Contact</h2>
+                <ul>
+                    <li>name1</li>
+                    <li>name2</li>
+                    <li>name3</li>
+                    <li>name4</li>
+                </ul>
+            </div>
+         </div>
+    </div>
+
+   
 
 
     <script src="script.js"></script> 

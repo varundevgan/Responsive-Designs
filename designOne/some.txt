@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+<body>
+    <!-- background -->
+     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-10"></div>
+     <!-- sidebar -->
+      <div id="sidebar" class=" fixed left-0 top-0  h-full w-3/5  md:w-1/2 bg-blue-200 shadow-lg  transform -translate-x-full transition-transform ease-in duration-300 z-20 flex justify-center">
+                <div class="flex flex-col w-3/4 h-3/4 mt-10 items-center">
+                    <img class="w-32 h-28 bg-contain" src="https://www.coreldraw.com/static/cdgs/landing_pages/seo/logo-design/08-symmetry.jpg" alt="">
+                    <ul class="flex flex-col items-center mt-10 flex-wrap  gap-10  text-xl ">
+                        <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Home</a></li>
+                        <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">About Us</a></li>
+                        <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Products</a></li>
+                        <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Contact Us</a></li>
+                    </ul> 
+                </div>
+        </div>
+
+
+    <div class="h-screen w-full bg-black ">
+        <!-- navbar -->
+         <div id="navbar" class="w-full fixed h-20 md:h-24 flex transform translate-y-0  justify-between top-0 px-10 transition-all duration-300 ease-in  items-center">
+            <!-- logo -->
+             <div class=" h-full ">
+                <img class="w-32 h-full object-contain" src="https://www.coreldraw.com/static/cdgs/landing_pages/seo/logo-design/08-symmetry.jpg" alt="">
+             </div>
+             <!-- navs -->
+              <ul class="md:flex justify-evenly flex-wrap hidden gap-10  text-xl ">
+                    <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Home</a></li>
+                    <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">About Us</a></li>
+                    <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Products</a></li>
+                    <li class="cursor-pointer hover:bg-amber-200 p-2.5 rounded-2xl"><a href="#">Contact Us</a></li>
+              </ul>
+              <!-- hamburger nav -->
+               <div id="btn" class="flex flex-col gap-1.5 md:hidden cursor-pointer mr-5 py-6">
+                    <span class="w-8 h-0.5 bg-black"></span>
+                    <span class="w-8 h-0.5 bg-black"></span>
+                    <span class="w-8 h-0.5 bg-black"></span>
+               </div>
+        </div>
+
+        <!-- content -->
+       <div class="pt-32">
+        <h1 class="text-white">Hello</h1>
+       </div>
+       
+    </div>
+    <div class="w-full h-screen bg-yellow-200"></div>
+
+   
+
+
+    <script src="script.js"></script> 
+</body>
+</html>
